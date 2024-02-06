@@ -4,6 +4,7 @@ jobs:
         docker:
             - image: circleci/openjdk:8-jdk
         steps:
+            - checkout  # Récupère le code source dans le répertoire de travail
             - run:
                   name: Run Tests
                   command: mvn test
