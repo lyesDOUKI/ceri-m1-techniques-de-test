@@ -24,6 +24,9 @@ public class IPokemonMetadataProviderTest {
         //véfifier que les informations récupérées sont correctes
         PokemonMetadata pokemonMetadata = this.iPokemonMetadataProvider.getPokemonMetadata(0);
 
-        assertEquals("Bulbizarredd", pokemonMetadata.getName());
+        assertEquals("Bulbizarre", pokemonMetadata.getName());
+        assertEquals(126, pokemonMetadata.getAttack());
+        assertEquals(126, pokemonMetadata.getDefense());
+        assertEquals(90, pokemonMetadata.getStamina());
     }
 }
