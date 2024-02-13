@@ -18,8 +18,8 @@ public class IPokemonTrainerFactoryTest {
     }
     @Test
     public void PokemTrainerShouldBeCreatedCorrectly(){
-        IPokedexFactory pokedexFactory = mock(IPokedexFactory.class);
         Team team = Team.INSTINCT;
+        IPokedexFactory pokedexFactory = mock(IPokedexFactory.class);
         IPokedex pokedex = mock(IPokedex.class);
         IPokemonMetadataProvider pokemonMetadataProvider = mock(IPokemonMetadataProvider.class);
         IPokemonFactory pokemonFactory = mock(IPokemonFactory.class);
@@ -34,5 +34,21 @@ public class IPokemonTrainerFactoryTest {
         assertNotNull(pokemonTrainer);
         assert(pokemonTrainer.getName().equals("Ash"));
         assert(pokemonTrainer.getTeam().equals(team));
+    }
+    @Test
+    public void cantCreateWithNullParams(){
+        Team team = Team.INSTINCT;
+        IPokedexFactory pokedexFactory = mock(IPokedexFactory.class);
+        IPokedex pokedex = mock(IPokedex.class);
+        IPokemonMetadataProvider pokemonMetadataProvider = mock(IPokemonMetadataProvider.class);
+        IPokemonFactory pokemonFactory = mock(IPokemonFactory.class);
+        when(pokedexFactory.createPokedex(pokemonMetadataProvider, pokemonFactory))
+                .thenReturn(pokedex);
+        when(pokemonTrainerFactory.createTrainer(null, team, pokedexFactory))
+                .thenThrow(new IllegalArgumentException());
+        when(pokemonTrainerFactory.createTrainer("Ash", null, pokedexFactory))
+                .thenThrow(new IllegalArgumentException());
+        when(pokemonTrainerFactory.createTrainer("Ash", team, null))
+                .thenThrow(new IllegalArgumentException());
     }
 }
