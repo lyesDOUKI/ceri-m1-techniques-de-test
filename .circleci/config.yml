@@ -11,7 +11,7 @@ jobs:
                   name: Run Tests
                   command: mvn test
             - run:
-                  name : upload to codecov
+                  name : upload-to-codecov
                   command: bash <(curl -s https://codecov.io/bash)
 
 workflows:
@@ -23,8 +23,8 @@ workflows:
                       branches:
                           only:
                               - master
-            - upload-to-codecov:
-                jobs:
-                    - checkout
-                    - codecov/upload
+    upload-to-codecov:
+        jobs:
+            - checkout
+            - codecov/upload
 
