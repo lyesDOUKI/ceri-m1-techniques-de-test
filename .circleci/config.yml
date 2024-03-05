@@ -25,6 +25,5 @@ workflows:
                               - master
     upload-to-codecov:
         jobs:
-            - checkout
-            - codecov/upload
+            - build
 
