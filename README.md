@@ -44,5 +44,6 @@ Si vous ne spécifiez pas de tag, le dernier commit à la date-heure de la fin d
 - Groupe : m1-alternant
 
 # Badges
-[![CircleCI]](https://app.circleci.com/pipelines/github/lyesDOUKI/ceri-m1-techniques-de-test)
-[![codecov]](https://app.codecov.io/gh/lyesDOUKI/ceri-m1-techniques-de-test)
+[![CircleCI](https://app.circleci.com/pipelines/github/lyesDOUKI/ceri-m1-techniques-de-test.svg?style=svg)]
+(https://app.circleci.com/pipelines/github/lyesDOUKI/ceri-m1-techniques-de-test)
+[![codecov](https://app.codecov.io/gh/lyesDOUKI/ceri-m1-techniques-de-test/badge.svg)](https://app.codecov.io/gh/lyesDOUKI/ceri-m1-techniques-de-test)
