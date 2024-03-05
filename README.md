@@ -35,3 +35,14 @@ Pour chaque rendu vous devez créer un tag à partir du commit qui correspond à
 Si vous ne spécifiez pas de tag, le dernier commit à la date-heure de la fin de séance sera celui considéré.
 
 [^1]: Si vous n’êtes vraiment pas à l’aise avec cet outil nous vous conseillons quand même vivement de vous y mettre.
+
+# Nom et prénom
+- Nom : DOUKI
+- Prénom : Lyes
+
+# Groupe
+- Groupe : m1-alternant
+
+# Badges
+[![CircleCI]](https://app.circleci.com/pipelines/github/lyesDOUKI/ceri-m1-techniques-de-test)
+[![codecov]](https://app.codecov.io/gh/lyesDOUKI/ceri-m1-techniques-de-test)
