@@ -8,6 +8,8 @@ jobs:
             - run:
                   name: Run Tests
                   command: mvn test
+orbs:
+    codecov: codecov/codecov@4.0.1
 workflows:
     version: 2
     build:
@@ -17,3 +19,8 @@ workflows:
                       branches:
                           only:
                               - master
+            - upload-to-codecov:
+                jobs:
+                    - checkout
+                    - codecov/upload
+
