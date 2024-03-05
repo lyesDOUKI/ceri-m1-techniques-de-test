@@ -45,5 +45,5 @@ Si vous ne spécifiez pas de tag, le dernier commit à la date-heure de la fin d
 
 # Badges
 
-[![CircleCI]([![CircleCI](https://dl.circleci.com/status-badge/img/gh/lyesDOUKI/ceri-m1-techniques-de-test/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/lyesDOUKI/ceri-m1-techniques-de-test/tree/master))](https://app.circleci.com/pipelines/github/lyesDOUKI/ceri-m1-techniques-de-test)
-[![codecov]([![codecov](https://codecov.io/gh/lyesDOUKI/ceri-m1-techniques-de-test/graph/badge.svg?token=7NS91W0IO7)](https://codecov.io/gh/lyesDOUKI/ceri-m1-techniques-de-test))](https://app.codecov.io/gh/lyesDOUKI/ceri-m1-techniques-de-test)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/lyesDOUKI/ceri-m1-techniques-de-test/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/lyesDOUKI/ceri-m1-techniques-de-test/tree/master)
+[![codecov](https://codecov.io/gh/lyesDOUKI/ceri-m1-techniques-de-test/graph/badge.svg?token=7NS91W0IO7)](https://codecov.io/gh/lyesDOUKI/ceri-m1-techniques-de-test)
