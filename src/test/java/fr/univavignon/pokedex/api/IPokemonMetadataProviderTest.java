@@ -51,4 +51,19 @@ public class IPokemonMetadataProviderTest {
             this.iPokemonMetadataProvider.getPokemonMetadata(-1);
         });
     }
+    @Test
+    public void metaDataShouldThrowPokemonExceptionWhenPokemonNotFoundTest() {
+        // Vérifie le lancement de l'exception pour un Pokémon non présent dans la liste
+        assertThrows(PokedexException.class, () -> {
+            this.iPokemonMetadataProvider.getPokemonMetadata(10); // Un index qui n'existe pas dans la liste
+        });
+    }
+    @Test
+    public void metaDataShouldThrowPokemonExceptionWhenInvalidIndexTest() {
+        // Vérifie le lancement de l'exception pour un index inconnu (par exemple 1000)
+        assertThrows(PokedexException.class, () -> {
+            this.iPokemonMetadataProvider.getPokemonMetadata(1000);
+        });
+    }
+
 }

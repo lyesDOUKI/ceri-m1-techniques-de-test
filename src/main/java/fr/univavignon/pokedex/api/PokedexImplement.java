@@ -26,6 +26,11 @@ public class PokedexImplement implements IPokedex{
 
     @Override
     public int addPokemon(Pokemon pokemon) {
+        for (Pokemon pokemon1 : pokemons) {
+            if (pokemon1.getIndex() == pokemon.getIndex()) {
+                throw new IllegalArgumentException("Pokemon already exists");
+            }
+        }
         this.pokemons.add(pokemon);
         return pokemon.getIndex();
     }

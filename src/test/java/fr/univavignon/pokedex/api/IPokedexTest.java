@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -196,4 +197,83 @@ public class IPokedexTest {
         }
         assertEquals("Aquali", pokemons.get(pokemons.size() - 1 ).getName());
     }
+    @Test
+    void createPokemonTest() throws PokedexException {
+
+        IPokemonFactory pokemonFactory = mock(IPokemonFactory.class);
+        when(pokemonFactory.createPokemon(0, 613, 64, 4000, 4)).thenReturn(new Pokemon(0, "Bulbasaur", 126, 126, 90, 613, 64, 4000, 4, 0.91));
+
+        IPokemonMetadataProvider pokemonMetadataProvider = mock(IPokemonMetadataProvider.class);
+        when(pokemonMetadataProvider.getPokemonMetadata(0)).thenReturn(new PokemonMetadata(0, "Bulbasaur", 126, 126, 90));
+
+        IPokedex pokedex = new PokedexImplement(pokemonFactory, pokemonMetadataProvider);
+
+        Pokemon createdPokemon = pokedex.createPokemon(0, 613, 64, 4000, 4);
+
+        assertEquals("Bulbasaur", createdPokemon.getName());
+        assertEquals(126, createdPokemon.getAttack());
+        assertEquals(126, createdPokemon.getDefense());
+        assertEquals(90, createdPokemon.getStamina());
+    }
+    @Test
+    void getPokemonMetadataTest() throws PokedexException {
+
+        IPokemonMetadataProvider pokemonMetadataProvider = mock(IPokemonMetadataProvider.class);
+        IPokemonFactory pokemonFactory = mock(IPokemonFactory.class);
+        when(pokemonMetadataProvider.getPokemonMetadata(0)).thenReturn(new PokemonMetadata(0, "Bulbasaur", 126, 126, 90));
+
+
+        IPokedex pokedex = new PokedexImplement(pokemonFactory, pokemonMetadataProvider);
+
+
+        PokemonMetadata pokemonMetadata = pokedex.getPokemonMetadata(0);
+
+
+        assertEquals("Bulbasaur", pokemonMetadata.getName());
+        assertEquals(126, pokemonMetadata.getAttack());
+        assertEquals(126, pokemonMetadata.getDefense());
+        assertEquals(90, pokemonMetadata.getStamina());
+    }
+
+    @Test
+    void testAddPokemon() {
+        IPokemonFactory pokemonFactory = mock(IPokemonFactory.class);
+        IPokemonMetadataProvider pokemonMetadataProvider = mock(IPokemonMetadataProvider.class);
+        IPokedex pokedex = new PokedexImplement(pokemonFactory, pokemonMetadataProvider);
+
+        Pokemon pokemon = new Pokemon(0, "Bulbasaur", 126, 126, 90, 613, 64, 4000, 4, 0.91);
+
+        int index = pokedex.addPokemon(pokemon);
+        assertEquals(0, index);
+
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            pokedex.addPokemon(pokemon);
+        });
+    }
+
+    @Test
+    void testAddMultiplePokemon() {
+        IPokemonFactory pokemonFactory = mock(IPokemonFactory.class);
+        IPokemonMetadataProvider pokemonMetadataProvider = mock(IPokemonMetadataProvider.class);
+        IPokedex pokedex = new PokedexImplement(pokemonFactory, pokemonMetadataProvider);
+
+        Pokemon pokemon1 = new Pokemon(0, "Bulbasaur", 126, 126, 90, 613, 64, 4000, 4, 0.91);
+        Pokemon pokemon2 = new Pokemon(1, "Ivysaur", 156, 158, 120, 613, 64, 4000, 4, 0.91);
+
+        pokedex.addPokemon(pokemon1);
+        pokedex.addPokemon(pokemon2);
+
+        assertEquals(2, pokedex.size());
+    }
+    @Test
+    void testGetPokemonsUnmodifiable() {
+        IPokedex pokedex = new PokedexImplement();
+
+        List<Pokemon> pokemons = pokedex.getPokemons();
+        assertThrows(UnsupportedOperationException.class, () -> {
+            pokemons.add(new Pokemon(2, "Venusaur", 198, 200, 160, 613, 64, 4000, 4, 0.91));
+        });
+    }
+
 }
