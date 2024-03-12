@@ -1,9 +1,6 @@
 package fr.univavignon.pokedex.api;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class PokedexImplement implements IPokedex{
 
@@ -35,46 +32,55 @@ public class PokedexImplement implements IPokedex{
 
     @Override
     public Pokemon getPokemon(int id) throws PokedexException {
-       if(id < 0 || id >= CAPACITY)
-       {
-              throw new PokedexException("Invalid index");
-         }
-         else
-         {
-              return this.pokemons.get(id);
-       }
+        if(id < 0 || id >= CAPACITY)
+        {
+            throw new PokedexException("Invalid index");
+        }
+        else
+        {
+            for (Pokemon pokemon : pokemons) {
+                if (pokemon.getIndex() == id) {
+                    return pokemon;
+                }
+            }
+            throw new PokedexException("Pokemon not found");
+        }
     }
 
     @Override
     public List<Pokemon> getPokemons() {
-        return this.pokemons;
+        return Collections.unmodifiableList(this.pokemons);
     }
 
     @Override
     public List<Pokemon> getPokemons(Comparator<Pokemon> order) {
         this.pokemons.sort(order);
-        return this.pokemons;
+        return Collections.unmodifiableList(this.pokemons);
     }
 
     @Override
     public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) {
+        Pokemon pokemonIncomplet = this.pokemonFactory.createPokemon(index, cp, hp, dust, candy);
         try {
-            this.pokemonMetadata = this.getPokemonMetadata(index);
-            Pokemon pokemon = new Pokemon(index, this.pokemonMetadata.getName(),
-                    this.pokemonMetadata.getAttack(), this.pokemonMetadata.getDefense(),
-                    this.pokemonMetadata.getStamina(), cp, hp, dust, candy, 0);
-            this.pokemons.add(pokemon);
-            return pokemon;
+            this.pokemonMetadata = this.pokemonMetadataProvider.getPokemonMetadata(index);
+            Pokemon PokemonComplet = new Pokemon(index, this.pokemonMetadata.getName(),
+                    this.pokemonMetadata.getAttack(),
+                    this.pokemonMetadata.getDefense(), this.pokemonMetadata.getStamina(),
+                    pokemonIncomplet.getCp(), pokemonIncomplet.getHp(), pokemonIncomplet.getDust(),
+                    pokemonIncomplet.getCandy(),
+                    pokemonIncomplet.getIv());
+            this.pokemons.add(PokemonComplet);
+            return PokemonComplet;
         } catch (PokedexException e) {
-            throw new RuntimeException(e);
-        }
+            e.printStackTrace();
+            }
+        return null;
 
     }
 
     @Override
     public PokemonMetadata getPokemonMetadata(int index) throws PokedexException {
-        this.pokemonMetadata = this.getPokemonMetadata(index);
-        return this.pokemonMetadata;
+        return this.pokemonMetadataProvider.getPokemonMetadata(index);
     }
 
 }
