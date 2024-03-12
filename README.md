@@ -1,3 +1,7 @@
+# Badges
+
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/lyesDOUKI/ceri-m1-techniques-de-test/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/lyesDOUKI/ceri-m1-techniques-de-test/tree/master)
+[![codecov](https://codecov.io/gh/lyesDOUKI/ceri-m1-techniques-de-test/graph/badge.svg?token=7NS91W0IO7)](https://codecov.io/gh/lyesDOUKI/ceri-m1-techniques-de-test)
 # UCE Génie Logiciel Avancé : Techniques de tests
 
 ## Introduction
@@ -43,7 +47,3 @@ Si vous ne spécifiez pas de tag, le dernier commit à la date-heure de la fin d
 # Groupe
 - Groupe : m1-alternant
 
-# Badges
-
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/lyesDOUKI/ceri-m1-techniques-de-test/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/lyesDOUKI/ceri-m1-techniques-de-test/tree/master)
-[![codecov](https://codecov.io/gh/lyesDOUKI/ceri-m1-techniques-de-test/graph/badge.svg?token=7NS91W0IO7)](https://codecov.io/gh/lyesDOUKI/ceri-m1-techniques-de-test)
