@@ -19,6 +19,7 @@ jobs:
             - deploy:
                 name: Deploy to GitHub Pages
                 command: |
+                        npm install -g --silent gh-pages@2.0.1
                         git config --global user.email "lyes.douki@alumni.univ-avignon.fr"
                         git config --global user.name "lyesdki"
             - add_ssh_keys:
