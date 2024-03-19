@@ -16,6 +16,15 @@ jobs:
             - run:
                 name : generate-java-doc
                 command: javadoc src/main/java/fr/univavignon/pokedex/api/* -d docs
+            - deploy:
+                name: Deploy to GitHub Pages
+                command: |
+                        git config --global user.email "lyes.douki@alumni.univ-avignon.fr"
+                        git config --global user.name "lyesdki"
+                        git checkout -B gh-pages
+                        git add -f docs
+                        git commit -m "Deploy Javadoc from CircleCI [skip ci]"
+                        git push -fq origin gh-pages
 
 
 workflows:
