@@ -16,21 +16,25 @@ jobs:
             - run:
                 name : generate-java-doc
                 command: javadoc src/main/java/fr/univavignon/pokedex/api/* -d docs
-    deploy_to_github_pages:
+    docs-deploy:
       docker:
-        - image: circleci/node:14  # Image Docker contenant Node.js
+        - image: node:8.10.0
       steps:
         - checkout
+        - attach_workspace:
+            at: docs/
         - run:
-            name: Deploy to GitHub Pages
+            name: Install and configure dependencies
             command: |
               npm install -g --silent gh-pages@2.0.1
-              git config --global user.email "lyes.douki@alumni.univ-avignon.fr"
-              git config --global user.name "lyesdki"
-              gh-pages --dist docs/
+              git config user.email "lyes.douki@alumni.univ-avignon.fr"
+              git config user.name "lyesdki"
         - add_ssh_keys:
             fingerprints:
               - "07:46:fd:0c:37:7d:00:03:f2:17:a4:e0:2f:fc:45:60"
+        - run:
+            name: Deploy docs to gh-pages branch
+            command: gh-pages --dist docs/
 workflows:
   version: 2
   build_and_deploy:
@@ -40,7 +44,7 @@ workflows:
             branches:
               only:
                 - master
-      - deploy_to_github_pages:
+      - docs-deploy:
           requires:
             - build
 
