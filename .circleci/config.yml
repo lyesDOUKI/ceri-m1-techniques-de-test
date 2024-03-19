@@ -21,10 +21,14 @@ jobs:
                 command: |
                         git config --global user.email "lyes.douki@alumni.univ-avignon.fr"
                         git config --global user.name "lyesdki"
-                        git checkout -B gh-pages
-                        git add -f docs
-                        git commit -m "Deploy Javadoc from CircleCI [skip ci]"
-                        git push -fq origin gh-pages
+            - add_ssh_keys:
+                fingerprints:
+                  - "07:46:fd:0c:37:7d:00:03:f2:17:a4:e0:2f:fc:45:60"
+            - run:
+                  git checkout -B gh-pages
+                  git add -f docs
+                  git commit -m "Deploy Javadoc from CircleCI [skip ci]"
+                  git push -fq origin gh-pages
 
 
 workflows:
