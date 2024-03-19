@@ -5,7 +5,8 @@
 # badge checkstyle
 * ![Checkstyle](target/site/badges/checkstyle-result.svg)
 # UCE Génie Logiciel Avancé : Techniques de tests
-
+# lien vers la javadoc
+* [Javadoc](https://lyesdouki.github.io/ceri-m1-techniques-de-test/docs/fr/univavignon/pokedex/api/package-summary.html)
 ## Introduction
 
 Vous allez à travers ces projet mettre en application une partie des aspects évoqués en cours vis à vis des techniques de tests.  
