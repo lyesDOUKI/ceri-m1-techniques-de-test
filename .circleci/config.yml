@@ -31,7 +31,7 @@ jobs:
               git config user.name "lyesdki"
         - add_ssh_keys:
             fingerprints:
-              - "07:46:fd:0c:37:7d:00:03:f2:17:a4:e0:2f:fc:45:60"
+              - "J81m19bUhDF5nGtUpe0ZdZYGa6/0yu6iUx01eylaG3c"
         - run:
             name: Deploy docs to gh-pages branch
             command: gh-pages --dist docs/
