@@ -1,46 +1,44 @@
 version: 2
 orbs:
-    codecov: codecov/codecov@4.0.1
-jobs:
-    build:
-        docker:
-            - image: circleci/openjdk:8-jdk
-        steps:
-            - checkout  # Récupère le code source dans le répertoire de travail
-            - run:
-                  name: Run Tests
-                  command: mvn test
-            - run:
-                  name : upload-to-codecov
-                  command: bash <(curl -s https://codecov.io/bash)
-            - run:
-                name : generate-java-doc
-                command: javadoc src/main/java/fr/univavignon/pokedex/api/* -d docs
-            - deploy:
-                name: Deploy to GitHub Pages
-                command: |
-                        git config --global user.email "lyes.douki@alumni.univ-avignon.fr"
-                        git config --global user.name "lyesdki"
-            - add_ssh_keys:
-                fingerprints:
-                  - "07:46:fd:0c:37:7d:00:03:f2:17:a4:e0:2f:fc:45:60"
-            - run:
-                  git checkout -B gh-pages
-                  git add -f docs
-                  git commit -m "Deploy Javadoc from CircleCI [skip ci]"
-                  git push -fq origin gh-pages
+  codecov: codecov/codecov@4.0.1
 
+jobs:
+  build:
+    docker:
+      - image: circleci/openjdk:8-jdk
+    steps:
+      - checkout  # Récupère le code source dans le répertoire de travail
+      - run:
+          name: Run Tests
+          command: mvn test
+      - run:
+          name: upload-to-codecov
+          command: bash <(curl -s https://codecov.io/bash)
+      - run:
+          name: generate-java-doc
+          command: javadoc src/main/java/fr/univavignon/pokedex/api/* -d docs
+      - add_ssh_keys:
+          fingerprints:
+            - "07:46:fd:0c:37:7d:00:03:f2:17:a4:e0:2f:fc:45:60"
+      - run:
+          name: Deploy to GitHub Pages
+          command: |
+            git config --global user.email "lyes.douki@alumni.univ-avignon.fr"
+            git config --global user.name "lyesdki"
+            git checkout -B gh-pages
+            git add -f docs
+            git commit -m "Deploy Javadoc from CircleCI [skip ci]"
+            git push -fq origin gh-pages
 
 workflows:
-    version: 2
-    build:
-        jobs:
-            - build:
-                  filters:
-                      branches:
-                          only:
-                              - master
-    upload-to-codecov:
-        jobs:
+  version: 2
+  build:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - master
+      - upload-to-codecov:
+          jobs:
             - build
-
