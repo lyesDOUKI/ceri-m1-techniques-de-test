@@ -3,6 +3,11 @@ package fr.univavignon.pokedex.api;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implementation of the IPokemonMetadataProvider interface.
+ * @see IPokemonMetadataProvider
+ * list of pokemons metadata
+ */
 public class PokemonMetadataProviderImpl implements IPokemonMetadataProvider{
 
     List<PokemonMetadata> pokemonsMetadata;

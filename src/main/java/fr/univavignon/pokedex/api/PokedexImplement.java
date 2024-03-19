@@ -2,6 +2,10 @@ package fr.univavignon.pokedex.api;
 
 import java.util.*;
 
+/**
+ * Implementation of the IPokedex interface.
+ * @see IPokedex
+ */
 public class PokedexImplement implements IPokedex{
 
     private List<Pokemon> pokemons;
