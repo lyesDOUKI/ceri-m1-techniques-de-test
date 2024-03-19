@@ -3,7 +3,7 @@
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/lyesDOUKI/ceri-m1-techniques-de-test/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/lyesDOUKI/ceri-m1-techniques-de-test/tree/master)
 [![codecov](https://codecov.io/gh/lyesDOUKI/ceri-m1-techniques-de-test/graph/badge.svg?token=7NS91W0IO7)](https://codecov.io/gh/lyesDOUKI/ceri-m1-techniques-de-test)
 # badge checkstyle
-* ![Checkstyle](target/site/badges/checkstyle-result.svg)
+* ![Checkstyle](target/sls4ite/badges/checkstyle-result.svg)
 # UCE Génie Logiciel Avancé : Techniques de tests
 # lien vers la javadoc
 * [Javadoc](https://lyesdouki.github.io/ceri-m1-techniques-de-test/docs/fr/univavignon/pokedex/api/package-summary.html)
