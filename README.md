@@ -50,3 +50,12 @@ Si vous ne spécifiez pas de tag, le dernier commit à la date-heure de la fin d
 # Groupe
 - Groupe : m1-alternant
 
+# Compte rendu du TP6 
+## Tester la nouvelles classe avec les tests unitaires de IpokemonFactory
+- J'ai testé la nouvelle classe avec les tests unitaires de IpokemonFactory : 
+- Les tests echouent car la nouvelle classe permet de creer des pokemons avec un index negatif, ce qui n'est pas possible dans la classe PokemonFactory, comme c'est défini dans le cahier de charge.
+- Aussi la valeur de IV balance entre 0 et 1 selon le pokemon, la valeur n'est pas fixé à 0
+- Aussi, les pokemons sont créés en dure dans la nouvelle classe
+## Conclusion
+-Les tests en place ne sont sert pas assez robuste de mon point de vu pour tester de manière efficace la nouvelle classe, il faudrait ajouter des tests pour tester les cas limites et les cas d'erreurs.
+-Aussi, le code fourni n'est pas robuste et ne respecte pas les normes de qualité de code, par exemple on génére des valeurs aléatoires sans mettre de validateurs et des controles sur ce qui a été généré.
