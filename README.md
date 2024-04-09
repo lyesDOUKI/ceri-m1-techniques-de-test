@@ -59,3 +59,12 @@ Si vous ne spécifiez pas de tag, le dernier commit à la date-heure de la fin d
 ## Conclusion
 -Les tests en place ne sont sert pas assez robuste de mon point de vu pour tester de manière efficace la nouvelle classe, il faudrait ajouter des tests pour tester les cas limites et les cas d'erreurs.
 -Aussi, le code fourni n'est pas robuste et ne respecte pas les normes de qualité de code, par exemple on génére des valeurs aléatoires sans mettre de validateurs et des controles sur ce qui a été généré.
+
+# Les liens vers les commits : 
+-TP6 : 3500bc7
+-TP5 : 3f0315d
+-TP4 : eb964bd
+-TP3 : 0a6b91a
+-TP2 : bdbe390
+-TP1 : 969ab78
+ 
