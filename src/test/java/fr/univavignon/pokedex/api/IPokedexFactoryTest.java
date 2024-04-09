@@ -15,12 +15,14 @@ public class IPokedexFactoryTest {
     private IPokedexFactory pokedexFactory;
     private IPokemonMetadataProvider metadataProvider;
     private IPokemonFactory pokemonFactory;
+    private RocketPokemonFactory rocketPokemonFactory;
 
     @BeforeAll
     public void setUp() {
         this.pokedexFactory = new PokedexFactory();
         this.metadataProvider = new PokemonMetadataProviderImpl();
         this.pokemonFactory = new PokemonFactory();
+        this.rocketPokemonFactory = new RocketPokemonFactory();
     }
 
     @Test
@@ -45,6 +47,32 @@ public class IPokedexFactoryTest {
     @Test
     public void testThatPokedexIsGood() {
         IPokedex iPokedex = pokedexFactory.createPokedex(metadataProvider, pokemonFactory);
+        assertNotNull(iPokedex);
+        assertEquals(0, iPokedex.size());
+    }
+
+    @Test
+    public void testCreatePokedexWithNewClass() {
+        IPokedex iPokedex = pokedexFactory.createPokedex(metadataProvider, rocketPokemonFactory);
+        assertNotNull(iPokedex);
+    }
+
+    @Test
+    public void throwExceptionIfParamsNullWithNewClass() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            pokedexFactory.createPokedex(null, null);
+        });
+        assertThrows(IllegalArgumentException.class, () -> {
+            pokedexFactory.createPokedex(null, rocketPokemonFactory);
+        });
+        assertThrows(IllegalArgumentException.class, () -> {
+            pokedexFactory.createPokedex(metadataProvider, null);
+        });
+    }
+
+    @Test
+    public void testThatPokedexIsGoodWithNewClass() {
+        IPokedex iPokedex = pokedexFactory.createPokedex(metadataProvider, rocketPokemonFactory);
         assertNotNull(iPokedex);
         assertEquals(0, iPokedex.size());
     }
